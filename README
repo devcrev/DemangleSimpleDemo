@@ -1,0 +1,8 @@
+make
+    > This builds the program.
+
+make run
+    > This runs the program.
+
+make clean
+    > This cleans up, i.e. deletes the program.
