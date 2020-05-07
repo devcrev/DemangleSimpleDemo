@@ -11,69 +11,55 @@ class testClass {
         ~testClass() {};
 };
 
+void display (const char * title, char * mangledName, char * demangledName) {
+    std::cout << title << std::endl;
+    std::cout << "Mangled: " << mangledName << std::endl;
+    std::cout << "Demangled: " << demangledName << std::endl;
+    std::cout << std::endl;
+}
+
 int main () {
     // We will use these over and over.
-    char* mangledName = nullptr;
-    char* demangledName = nullptr;
+    char * mangledName = nullptr;
+    char * demangledName = nullptr;
     int status = 0;
 
     // Now for some demonstrations.
 
     auto x1 = 'a';
-    std::cout << "x1 test ..." << std::endl;
-    mangledName = const_cast<char*>(typeid(x1).name());
+    mangledName = const_cast<char *>(typeid(x1).name());
     demangledName = abi::__cxa_demangle(mangledName, 0, 0, &status);
-    std::cout << "Mangled: " << mangledName << std::endl;
-    std::cout << "Demangled: " << demangledName << std::endl;
-    std::cout << std::endl;
+    display ("x1 test ...", mangledName, demangledName);
 
     auto x2 = testClass();
-    std::cout << "x2 test ..." << std::endl;
-    mangledName = const_cast<char*>(typeid(x2).name());
+    mangledName = const_cast<char *>(typeid(x2).name());
     demangledName = abi::__cxa_demangle(mangledName, 0, 0, &status);
-    std::cout << "Mangled: " << mangledName << std::endl;
-    std::cout << "Demangled: " << demangledName << std::endl;
-    std::cout << std::endl;
+    display ("x2 test ...", mangledName, demangledName);
 
     auto x3 = x2.anInteger;
-    std::cout << "x3 test ..." << std::endl;
-    mangledName = const_cast<char*>(typeid(x3).name());
+    mangledName = const_cast<char *>(typeid(x3).name());
     demangledName = abi::__cxa_demangle(mangledName, 0, 0, &status);
-    std::cout << "Mangled: " << mangledName << std::endl;
-    std::cout << "Demangled: " << demangledName << std::endl;
-    std::cout << std::endl;
+    display ("x3 test ...", mangledName, demangledName);
 
     auto x4 = L'a';
-    std::cout << "x4 test ..." << std::endl;
-    mangledName = const_cast<char*>(typeid(x4).name());
+    mangledName = const_cast<char *>(typeid(x4).name());
     demangledName = abi::__cxa_demangle(mangledName, 0, 0, &status);
-    std::cout << "Mangled: " << mangledName << std::endl;
-    std::cout << "Demangled: " << demangledName << std::endl;
-    std::cout << std::endl;
+    display ("x4 test ...", mangledName, demangledName);
 
     auto x5 = "a";
-    std::cout << "x5 test ..." << std::endl;
-    mangledName = const_cast<char*>(typeid(x5).name());
+    mangledName = const_cast<char *>(typeid(x5).name());
     demangledName = abi::__cxa_demangle(mangledName, 0, 0, &status);
-    std::cout << "Mangled: " << mangledName << std::endl;
-    std::cout << "Demangled: " << demangledName << std::endl;
-    std::cout << std::endl;
+    display ("x5 test ...", mangledName, demangledName);
 
     auto x6 = 10ULL;
-    std::cout << "x6 test ..." << std::endl;
-    mangledName = const_cast<char*>(typeid(x6).name());
+    mangledName = const_cast<char *>(typeid(x6).name());
     demangledName = abi::__cxa_demangle(mangledName, 0, 0, &status);
-    std::cout << "Mangled: " << mangledName << std::endl;
-    std::cout << "Demangled: " << demangledName << std::endl;
-    std::cout << std::endl;
+    display ("x6 test ...", mangledName, demangledName);
 
     auto x7 = 10E-2;
-    std::cout << "x7 test ..." << std::endl;
-    mangledName = const_cast<char*>(typeid(x7).name());
+    mangledName = const_cast<char *>(typeid(x7).name());
     demangledName = abi::__cxa_demangle(mangledName, 0, 0, &status);
-    std::cout << "Mangled: " << mangledName << std::endl;
-    std::cout << "Demangled: " << demangledName << std::endl;
-    std::cout << std::endl;
+    display ("x7 test ...", mangledName, demangledName);
 
     return 0;
 }
@@ -83,6 +69,6 @@ int main () {
         > 2018-10-11 18:04:32, DevCrev(github.com/devcrev):
             > Creation.
             > We have 7 tests with this release.
+        > 2020-05-07 17:07:09, DevCrev(github.com/devcrev):
+            > Refactored code that outputs results.
 */
-
-
